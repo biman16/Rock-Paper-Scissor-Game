@@ -4,21 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fn Rock Paper Scissors</title>
+
+    <link rel="stylesheet" href="interval-rock-paper.css">
+
 </head>
 <body>
 
-    <h1>Rock Paper Scissors</h1>
+    <h1 class="titleparagraph">Rock Paper Scissors</h1>
 
-    <button id="rockBtn">Rock</button>
-    <button id="paperBtn">Paper</button>
-    <button id="scissorsBtn">Scissors</button>
+    <button onclick="playGame('Rock')" 
+            class="emoji-btn">
+            <img src="images/Rock-emoji.png" alt="rock-emoji" class="emoji">
+    </button>
 
-    <p class="showResult"></p>
+    <button onclick="playGame('Paper')" 
+            class="emoji-btn">
+            <img src="images/Paper-emoji.png" alt="paper-emoji" class="emoji">
+    </button>
+
+    <button onclick="playGame('Scissors')" 
+            class="emoji-btn">
+            <img src="images/Scissors-emoji.png" alt="scissors-emoji" class="emoji">
+    </button>
+
+    <p class="showResult result">Play to Win</p>
     <p class="showMoves"></p>    
-    <p class="showDetails"></p>
+    <p class="showDetails score"></p>
 
-    <button id="resetBtn">Reset Scores</button>
+    <button class="resetbtn"
+            onclick="
+            scores.wins = 0;
+            scores.losses = 0;
+            scores.ties = 0;
+            localStorage.removeItem('score');
+            updateScoreElement();
+            document.querySelector('.showResult').innerHTML = 'Play to Win';
+            document.querySelector('.showMoves').innerHTML = '';"
+        >Reset Scores
+    </button>
 
-    <script src="main.js"></script>
+    <button 
+            class="resetbtn"
+            onclick="autoPlay();"
+        >Auto Play
+    </button>
+
+    <script src="interval-rock-paper.js"></script>
 </body>
 </html>
